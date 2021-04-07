@@ -1,11 +1,11 @@
-package es.plexus.android.plexuschuck.datalayer.utils
+package es.plexus.android.marvelpedia.datalayer.utils
 
-import es.plexus.android.plexuschuck.datalayer.datasource.JokesDataSource.Companion.JOKES_API_SERVICE_TAG
-import es.plexus.android.plexuschuck.datalayer.di.dataLayerModule
-import es.plexus.android.plexuschuck.datalayer.domain.JokeDtoWrapper
-import es.plexus.android.plexuschuck.datalayer.domain.dtoToBo
-import es.plexus.android.plexuschuck.datalayer.service.IcndbApiService
-import es.plexus.android.plexuschuck.domainlayer.domain.JokeBoWrapper
+import es.plexus.android.marvelpedia.datalayer.datasource.JokesDataSource.Companion.JOKES_API_SERVICE_TAG
+import es.plexus.android.marvelpedia.datalayer.di.dataLayerModule
+import es.plexus.android.marvelpedia.datalayer.domain.JokeDtoWrapper
+import es.plexus.android.marvelpedia.datalayer.domain.dtoToBo
+import es.plexus.android.marvelpedia.datalayer.service.IcndbApiService
+import es.plexus.android.marvelpedia.domainlayer.domain.JokeBoWrapper
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before

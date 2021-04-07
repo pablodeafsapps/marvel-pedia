@@ -1,4 +1,4 @@
-package es.plexus.android.plexuschuck.datalayer.repository
+package es.plexus.android.marvelpedia.datalayer.repository
 
 import arrow.core.Either
 import arrow.core.left
@@ -8,16 +8,16 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.doThrow
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import es.plexus.android.plexuschuck.datalayer.datasource.AuthenticationDataSource
-import es.plexus.android.plexuschuck.datalayer.datasource.AuthenticationDataSource.Companion.AUTHENTICATION_DATA_SOURCE_TAG
-import es.plexus.android.plexuschuck.datalayer.datasource.ConnectivityDataSource
-import es.plexus.android.plexuschuck.datalayer.datasource.ConnectivityDataSource.Companion.CONNECTIVITY_DATA_SOURCE_TAG
-import es.plexus.android.plexuschuck.datalayer.di.dataLayerModule
-import es.plexus.android.plexuschuck.datalayer.domain.FailureDto
-import es.plexus.android.plexuschuck.domainlayer.DomainlayerContract
-import es.plexus.android.plexuschuck.domainlayer.DomainlayerContract.Datalayer.Companion.AUTHENTICATION_REPOSITORY_TAG
-import es.plexus.android.plexuschuck.domainlayer.domain.FailureBo
-import es.plexus.android.plexuschuck.domainlayer.domain.UserLoginBo
+import es.plexus.android.marvelpedia.datalayer.datasource.AuthenticationDataSource
+import es.plexus.android.marvelpedia.datalayer.datasource.AuthenticationDataSource.Companion.AUTHENTICATION_DATA_SOURCE_TAG
+import es.plexus.android.marvelpedia.datalayer.datasource.ConnectivityDataSource
+import es.plexus.android.marvelpedia.datalayer.datasource.ConnectivityDataSource.Companion.CONNECTIVITY_DATA_SOURCE_TAG
+import es.plexus.android.marvelpedia.datalayer.di.dataLayerModule
+import es.plexus.android.marvelpedia.datalayer.domain.FailureDto
+import es.plexus.android.marvelpedia.domainlayer.DomainlayerContract
+import es.plexus.android.marvelpedia.domainlayer.DomainlayerContract.Datalayer.Companion.AUTHENTICATION_REPOSITORY_TAG
+import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
+import es.plexus.android.marvelpedia.domainlayer.domain.UserLoginBo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After

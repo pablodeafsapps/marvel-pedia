@@ -25,7 +25,7 @@ keystoreProperties.load(FileInputStream("keystore.properties"))
 android {
     compileSdkVersion(AndroidSdk.compile)
     defaultConfig {
-        applicationId = "es.plexus.android.plexuschuck.application"
+        applicationId = "es.plexus.android.marvelpedia.application"
         minSdkVersion(AndroidSdk.min)
         targetSdkVersion(AndroidSdk.target)
         multiDexEnabled = true
