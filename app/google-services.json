@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1060858310779",
+    "firebase_url": "https://organizesport.firebaseio.com",
+    "project_id": "organizesport",
+    "storage_bucket": "organizesport.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060858310779:android:248de5bd31c6ccf5",
+        "android_client_info": {
+          "package_name": "es.plexus.android.plexuschuck.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060858310779-6c6av9d9ao1qliagj9m5v5k6kf28den1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.plexus.android.plexuschuck.application",
+            "certificate_hash": "415fb25f46b85f58f8d28d356486d1afca834df2"
+          }
+        },
+        {
+          "client_id": "1060858310779-dh4t76ambi20bcikc6bpl0jh202ja5u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnoXbNBVdWA6-ZcO6Q-CL2qwWovLEWA7o"
+        }
+      ]
+    }
+  ],
+  "configuration_version": "1"
+}
