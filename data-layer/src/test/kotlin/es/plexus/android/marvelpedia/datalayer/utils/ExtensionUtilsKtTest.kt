@@ -1,10 +1,10 @@
 package es.plexus.android.marvelpedia.datalayer.utils
 
-import es.plexus.android.marvelpedia.datalayer.datasource.JokesDataSource.Companion.JOKES_API_SERVICE_TAG
+import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource.Companion.MOVIES_API_SERVICE_TAG
 import es.plexus.android.marvelpedia.datalayer.di.dataLayerModule
 import es.plexus.android.marvelpedia.datalayer.domain.JokeDtoWrapper
 import es.plexus.android.marvelpedia.datalayer.domain.dtoToBo
-import es.plexus.android.marvelpedia.datalayer.service.IcndbApiService
+import es.plexus.android.marvelpedia.datalayer.service.MarvelApiService
 import es.plexus.android.marvelpedia.domainlayer.domain.JokeBoWrapper
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 
 class ExtensionUtilsKtTest : KoinTest {
 
-    private val retrofitClient: Retrofit by inject(named(name = JOKES_API_SERVICE_TAG))
+    private val retrofitClient: Retrofit by inject(named(name = MOVIES_API_SERVICE_TAG))
 
     @Before
     fun setUp() {
@@ -36,7 +36,7 @@ class ExtensionUtilsKtTest : KoinTest {
     @Test
     fun `asfasfdsaf`() = runBlockingTest {
         // given
-        val request = retrofitClient.create(IcndbApiService::class.java)::getJokesAsync
+        val request = retrofitClient.create(MarvelApiService::class.java)::getCharactersAsync
         val transform: (JokeDtoWrapper) -> JokeBoWrapper = { it.dtoToBo() }
         // when
         val actualResult = retrofitSafeCall(retrofitRequest = request, transform = transform)

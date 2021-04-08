@@ -6,7 +6,6 @@ import androidx.multidex.MultiDex
 import es.plexus.android.marvelpedia.datalayer.di.dataLayerModule
 import es.plexus.android.marvelpedia.domainlayer.di.domainLayerModule
 import es.plexus.android.marvelpedia.presentationlayer.di.presentationLayerModule
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,10 +15,8 @@ import org.koin.core.context.startKoin
  * General tool configurations such as 'LeakCanary' for memory leaks, and 'Koin' for dependency
  * inversion are initialized here.
  *
- * @author Pablo L. Sordo Martínez
  * @since 1.0
  */
-@ExperimentalCoroutinesApi
 class BaseApplication : Application() {
 
     override fun onCreate() {

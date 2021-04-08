@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
  *
  * @param [itemView] A [View] item held by the [RecyclerView]
  */
-abstract class BaseViewHolder<S, T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+abstract class BaseViewHolder<S>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     /**
      * Defines a blueprint so that an action can be performed over an item
@@ -16,6 +16,6 @@ abstract class BaseViewHolder<S, T>(itemView: View) : RecyclerView.ViewHolder(it
      * @param [item] The data which is linked to the action
      * @param [callback] A lambda which depicts an action to perform
      */
-    abstract fun onBind(item: S, callback: (T) -> Unit = {})
+    abstract fun onBind(item: S, callback: (S) -> Unit = {})
 
 }

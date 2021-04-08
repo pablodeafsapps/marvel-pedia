@@ -17,48 +17,49 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/joke_item_one__tv__joke"
+            android:id="@+id/character_item__tv__character"
             android:layout_width="@dimen/fully_stretchable"
             android:layout_height="@dimen/fully_stretchable"
-            android:layout_margin="@dimen/eight"
-            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:layout_marginEnd="@dimen/eight"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:maxLines="3"
-            android:text="@string/tv_placeholder_text_one"
+            android:maxLines="2"
+            android:text="@string/tv_placeholder_text"
             android:textColor="@android:color/black"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@id/joke_item_one__tv__categories"
-            app:layout_constraintEnd_toStartOf="@id/joke_item_one__iv__cn_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/character_item__iv__image"
+            app:layout_constraintEnd_toStartOf="@id/character_item__iv__image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/character_item__iv__image" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/joke_item_one__tv__categories"
+            android:id="@+id/character_item__tv__description"
             android:layout_width="@dimen/fully_stretchable"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/eight"
-            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="@dimen/eight"
-            android:layout_marginRight="@dimen/eight"
             android:layout_marginBottom="@dimen/eight"
-            android:gravity="end"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/character_item__iv__image"
             tools:text="categories" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/joke_item_one__iv__cn_logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <ImageView
+            android:id="@+id/character_item__iv__image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_margin="@dimen/eight"
             android:contentDescription="@string/default_content_description"
-            app:layout_constraintBottom_toTopOf="@id/joke_item_one__tv__categories"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_cn_approved" />
+            app:srcCompat="@drawable/img_marvel_placeholder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

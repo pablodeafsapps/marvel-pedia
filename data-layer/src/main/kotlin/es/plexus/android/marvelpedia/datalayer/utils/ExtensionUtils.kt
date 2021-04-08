@@ -14,6 +14,7 @@ import es.plexus.android.marvelpedia.domainlayer.domain.ErrorMessage
 import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
 import retrofit2.Response
 import java.io.IOException
+import kotlin.reflect.KSuspendFunction1
 
 /**
  * This extension function allows any entity hosting a [Context] to easily check whether there is a
@@ -53,12 +54,11 @@ fun Context.isNetworkAvailable(): Boolean {
  * @param errorHandler function to handle errors
  * @param exceptionHandler function to handle exceptions
  *
- * @author Pablo L. Sordo Martínez and Jose Félix Castillo Moya
  * @since 2.0
  */
 internal suspend fun <U, S : Response<T>, T, R> retrofitSafeCall(
-    requestParameter: U?,
-    retrofitRequest: suspend (U?) -> S,
+    requestParameter: U,
+    retrofitRequest: suspend (U) -> S,
     transform: (T) -> R,
     errorHandler: (Response<T>).() -> Either<FailureBo, Nothing> = { handleDataSourceError() },
     exceptionHandler: (Exception).() -> Either<FailureBo, Nothing> = { handleDataSourceException() }
@@ -88,8 +88,7 @@ internal suspend fun <U, S : Response<T>, T, R> retrofitSafeCall(
  * @param errorHandler function to handle errors
  * @param exceptionHandler function to handle exceptions
  *
- * @author Pablo L. Sordo Martínez and Jose Félix Castillo Moya
- * @since 2.0
+ * @since 1.0
  */
 internal suspend fun <S : Response<T>, T, R> retrofitSafeCall(
     retrofitRequest: suspend () -> S,
@@ -118,7 +117,6 @@ internal suspend fun <S : Response<T>, T, R> retrofitSafeCall(
  * [Response]. It returns an [Either] which models the [FailureBo] to be transmitted beyond the
  * domain layer.
  *
- * @author Pablo L. Sordo Martínez
  * @since 1.0
  */
 fun <T> Response<T>?.handleDataSourceError(): Either<FailureBo, Nothing> =

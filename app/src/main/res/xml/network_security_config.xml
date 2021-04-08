@@ -2,6 +2,6 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="false" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">icndb.com</domain>
+        <domain includeSubdomains="true">i.annihil.us</domain>
     </domain-config>
 </network-security-config>

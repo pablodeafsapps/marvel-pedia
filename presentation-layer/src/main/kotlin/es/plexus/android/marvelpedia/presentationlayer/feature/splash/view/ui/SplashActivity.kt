@@ -1,18 +1,18 @@
 package es.plexus.android.marvelpedia.presentationlayer.feature.splash.view.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import es.plexus.android.marvelpedia.domainlayer.base.BaseDomainLayerBridge
 import es.plexus.android.marvelpedia.presentationlayer.base.BaseMvvmView
 import es.plexus.android.marvelpedia.presentationlayer.base.ScreenState
-import es.plexus.android.marvelpedia.presentationlayer.feature.login.view.ui.LoginActivity
+import es.plexus.android.marvelpedia.presentationlayer.feature.main.view.ui.MainActivity
 import es.plexus.android.marvelpedia.presentationlayer.feature.splash.view.state.SplashState
 import es.plexus.android.marvelpedia.presentationlayer.feature.splash.viewmodel.SplashActivityViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -37,7 +37,7 @@ class SplashActivity :
 
     override fun processRenderState(renderState: SplashState) {
         when (renderState) {
-            is SplashState.LoadingFinished -> startLoginActivity()
+            is SplashState.LoadingFinished -> startMainView()
         }
     }
 
@@ -46,14 +46,15 @@ class SplashActivity :
             viewModel.screenState.collect { screenState ->
                 when (screenState) {
                     is ScreenState.Render<SplashState> -> processRenderState(screenState.renderState)
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
         }
     }
 
-    private fun startLoginActivity() {
-        startActivity<LoginActivity>()
+    private fun startMainView() {
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

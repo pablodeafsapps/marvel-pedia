@@ -2,7 +2,6 @@ package es.plexus.android.marvelpedia.presentationlayer.feature.main.viewmodel
 
 import arrow.core.Either
 import arrow.core.left
-import arrow.core.right
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
@@ -67,7 +66,7 @@ class MainViewModelTest : KoinTest {
         verifyNoMoreInteractions(mockBridge)
         captor.firstValue.invoke(getDummyJokeBoWrapper().right())
 
-        Assert.assertTrue(getRenderState() is MainState.ShowJokeList)
+        Assert.assertTrue(getRenderState() is MainState.ShowCharacterList)
     }
 
     @Test

@@ -1,14 +1,14 @@
 package es.plexus.android.marvelpedia.presentationlayer.feature.main.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import es.plexus.android.marvelpedia.domainlayer.domain.CharacterDataBoWrapper
 import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
-import es.plexus.android.marvelpedia.domainlayer.domain.JokeBoWrapper
 import es.plexus.android.marvelpedia.domainlayer.feature.main.MainDomainLayerBridge
 import es.plexus.android.marvelpedia.presentationlayer.base.BaseMvvmViewModel
 import es.plexus.android.marvelpedia.presentationlayer.base.ScreenState
-import es.plexus.android.marvelpedia.presentationlayer.domain.JokeVo
-import es.plexus.android.marvelpedia.presentationlayer.domain.boToVo
+import es.plexus.android.marvelpedia.presentationlayer.domain.CharacterVo
 import es.plexus.android.marvelpedia.presentationlayer.domain.boToVoFailure
+import es.plexus.android.marvelpedia.presentationlayer.domain.toVoList
 import es.plexus.android.marvelpedia.presentationlayer.feature.main.view.state.MainState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -20,8 +20,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * All results update an observable variable, [_screenState], with [MainState] values.
  */
 @ExperimentalCoroutinesApi
-class MainViewModel(bridge: MainDomainLayerBridge<JokeBoWrapper>) :
-    BaseMvvmViewModel<MainDomainLayerBridge<JokeBoWrapper>, MainState>(bridge = bridge) {
+class MainViewModel(bridge: MainDomainLayerBridge<CharacterDataBoWrapper>) :
+    BaseMvvmViewModel<MainDomainLayerBridge<CharacterDataBoWrapper>, MainState>(bridge = bridge) {
 
     /**
      * Indicates that the associated view has been created
@@ -39,16 +39,18 @@ class MainViewModel(bridge: MainDomainLayerBridge<JokeBoWrapper>) :
     /**
      * Indicates that a joke item of the associated view has been selected
      */
-    fun onJokeItemSelected(item: JokeVo) {
-        _screenState.value = ScreenState.Render(MainState.ShowJokeDetail(joke = item))
+    fun onCharacterItemSelected(item: CharacterVo) {
+        _screenState.value = ScreenState.Render(MainState.ShowCharacterDetail(character = item))
     }
 
-    private fun handleSuccess(wrapper: JokeBoWrapper) {
-        _screenState.value = ScreenState.Render(MainState.ShowJokeList(jokeList = wrapper.value.boToVo()))
+    private fun handleSuccess(dataWrapper: CharacterDataBoWrapper) {
+        _screenState.value =
+            ScreenState.Render(MainState.ShowCharacterList(characterList = dataWrapper.data.results.toVoList()))
     }
 
     private fun handleError(failureBo: FailureBo) {
-        _screenState.value = ScreenState.Render(MainState.ShowError(failure = failureBo.boToVoFailure()))
+        _screenState.value =
+            ScreenState.Render(MainState.ShowError(failure = failureBo.boToVoFailure()))
     }
 
 }

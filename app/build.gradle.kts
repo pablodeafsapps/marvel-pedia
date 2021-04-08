@@ -74,7 +74,6 @@ tasks {
 
 dependencies {
     implementation(Libraries.kotlinStdLib)
-    implementation(Libraries.anko)
     implementation(Libraries.multidex)
     // other modules
     implementation(project(":presentation-layer"))

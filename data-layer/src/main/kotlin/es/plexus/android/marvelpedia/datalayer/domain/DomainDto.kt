@@ -6,23 +6,141 @@ import es.plexus.android.marvelpedia.domainlayer.domain.ErrorMessage
 import okhttp3.ResponseBody
 
 /**
- * This data class represents the Data Transfer Object related to a user login datum
- */
-data class UserLoginDto(val email: String, val password: String)
-
-/**
- * This data class models a wrapper over a [JokeDto] datum
- */
-data class JokeDtoWrapper(val type: String, val value: List<JokeDto>)
-
-/**
- * This data class represents the Data Transfer Object related to a joke datum
+ * This data class models a wrapper over a [CharacterDataDto] datum
  */
 @JsonClass(generateAdapter = true)
-data class JokeDto(
+data class CharacterDataDtoWrapper(
+    @Json(name = "etag") val etag: String?,
+    @Json(name = "data") val data: CharacterDataDto?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class CharacterDataDto(
+    @Json(name = "count") val count: Int?,
+    @Json(name = "limit") val limit: Int?,
+    @Json(name = "offset") val offset: Int?,
+    @Json(name = "results") val results: List<CharacterDto>?,
+    @Json(name = "total") val total: Int?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class CharacterDto(
+    @Json(name = "comics") val comics: ComicsDto?,
+    @Json(name = "description") val description: String?,
+    @Json(name = "events") val eventsDto: EventsDto?,
     @Json(name = "id") val id: Int?,
-    @Json(name = "joke") val joke: String?,
-    @Json(name = "categories") val categories: List<String>?
+    @Json(name = "modified") val modified: String?,
+    @Json(name = "name") val name: String?,
+    @Json(name = "resourceURI") val resourceUri: String?,
+    @Json(name = "series") val series: Series?,
+    @Json(name = "stories") val stories: StoriesDto?,
+    @Json(name = "thumbnail") val thumbnail: ThumbnailDto?,
+    @Json(name = "urls") val urls: List<UrlDto>?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ComicsDto(
+    @Json(name = "available") val available: Int?,
+    @Json(name = "collectionURI") val collectionUri: String?,
+    @Json(name = "items") val items: List<ItemDto>?,
+    @Json(name = "returned") val returned: Int?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class EventsDto(
+    @Json(name = "available") val available: Int?,
+    @Json(name = "collectionURI") val collectionUri: String?,
+    @Json(name = "items") val items: List<ItemXDto>?,
+    @Json(name = "returned") val returned: Int?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class Series(
+    @Json(name = "available") val available: Int?,
+    @Json(name = "collectionURI") val collectionUri: String?,
+    @Json(name = "items") val items: List<ItemXXDto>?,
+    @Json(name = "returned") val returned: Int?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class StoriesDto(
+    @Json(name = "available") val available: Int?,
+    @Json(name = "collectionURI") val collectionUri: String?,
+    @Json(name = "items") val items: List<ItemXXXDto>?,
+    @Json(name = "returned") val returned: Int?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ThumbnailDto(
+    @Json(name = "extension") val extension: String?,
+    @Json(name = "path") val path: String?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class UrlDto(
+    @Json(name = "type") val type: String?,
+    @Json(name = "url") val url: String?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ItemDto(
+    @Json(name = "name") val name: String?,
+    @Json(name = "resourceURI") val resourceUri: String?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ItemXDto(
+    @Json(name = "name") val name: String?,
+    @Json(name = "resourceURI") val resourceUri: String?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ItemXXDto(
+    @Json(name = "name") val name: String?,
+    @Json(name = "resourceURI") val resourceUri: String?
+)
+
+/**
+ *
+ */
+@JsonClass(generateAdapter = true)
+data class ItemXXXDto(
+    @Json(name = "name") val name: String?,
+    @Json(name = "resourceURI") val resourceUri: String?,
+    @Json(name = "type") val type: String?
 )
 
 /**
@@ -40,8 +158,7 @@ sealed class FailureDto(val msg: String?) {
         msg: String?,
         val errorBody: ResponseBody? = null
     ) : FailureDto(msg = msg)
-    object FirebaseLoginError : FailureDto(msg = ErrorMessage.ERROR_LOGIN_REQUEST)
-    class FirebaseRegisterError(msg: String?) : FailureDto(msg = msg)
+
     object NoData : FailureDto(msg = ErrorMessage.ERROR_NO_DATA)
     object Unknown : FailureDto(msg = ErrorMessage.ERROR_UNKNOWN)
     class Error(msg: String?) : FailureDto(msg = msg)
