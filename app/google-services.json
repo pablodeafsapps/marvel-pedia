@@ -1,37 +1,83 @@
 {
   "project_info": {
-    "project_number": "1060858310779",
-    "firebase_url": "https://organizesport.firebaseio.com",
-    "project_id": "organizesport",
-    "storage_bucket": "organizesport.appspot.com"
+    "project_number": "330564195578",
+    "project_id": "plexus-chuck",
+    "storage_bucket": "plexus-chuck.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1060858310779:android:248de5bd31c6ccf5",
+        "mobilesdk_app_id": "1:330564195578:android:6bcd766d0a79035a466543",
+        "android_client_info": {
+          "package_name": "es.plexus.android.marvelpedia.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330564195578-8i80oomcj4j668ulveoqdavu5iqe7ghb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.plexus.android.marvelpedia.application",
+            "certificate_hash": "2f2d697200e3ff65d0eff5cd7ec075e35740661d"
+          }
+        },
+        {
+          "client_id": "330564195578-cru661r58aogio9f659n3c24mf0mqkls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ-qEQzViYmvceVRyXd3rPf4LiEclfEBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330564195578-cru661r58aogio9f659n3c24mf0mqkls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330564195578:android:fa86606f2cf5d7f1466543",
         "android_client_info": {
           "package_name": "es.plexus.android.plexuschuck.application"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1060858310779-6c6av9d9ao1qliagj9m5v5k6kf28den1.apps.googleusercontent.com",
+          "client_id": "330564195578-no68cfl8rcsk36v5548oq71s8alp582v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "es.plexus.android.plexuschuck.application",
-            "certificate_hash": "415fb25f46b85f58f8d28d356486d1afca834df2"
+            "certificate_hash": "2f2d697200e3ff65d0eff5cd7ec075e35740661d"
           }
         },
         {
-          "client_id": "1060858310779-dh4t76ambi20bcikc6bpl0jh202ja5u2.apps.googleusercontent.com",
+          "client_id": "330564195578-cru661r58aogio9f659n3c24mf0mqkls.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCnoXbNBVdWA6-ZcO6Q-CL2qwWovLEWA7o"
+          "current_key": "AIzaSyAZ-qEQzViYmvceVRyXd3rPf4LiEclfEBI"
         }
-      ]
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330564195578-cru661r58aogio9f659n3c24mf0mqkls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

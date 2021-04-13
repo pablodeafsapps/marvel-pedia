@@ -1,17 +1,7 @@
 <resources>
-    <!-- activity_login -->
-    <string name="tv_activity_login_place_holder_text">activity_login</string>
-    <string name="btn_login_text">Login</string>
-    <string name="btn_register_text">Register</string>
-    <string name="et_email_hint">e-mail</string>
-    <string name="et_password_hint">password</string>
-    <string name="tv_login_text">Login</string>
-    <string name="tv_register_text">Register</string>
     <!-- activity_main -->
-    <string name="tv_title_text">CHUCK NORRIS FACTS</string>
     <string name="tv_no_data_text">No Data</string>
-    <string name="tv_placeholder_text_one">this text represents a joke to be fetched and displayed on the main screen</string>
-    <string name="tv_placeholder_text_two">joke type 2</string>
-    <string name="tv_detail_id">#%1$s</string>
+    <string name="tv_placeholder_text">this text represents a character to be fetched and displayed on the main screen</string>
     <string name="default_content_description">image</string>
+    <!-- activity_detail -->
 </resources>

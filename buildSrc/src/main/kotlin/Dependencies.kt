@@ -51,9 +51,6 @@ object Libraries {
     const val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
     const val arrowSyntax = "io.arrow-kt:arrow-syntax:${Versions.arrow}"
     const val arrowMeta = "io.arrow-kt:arrow-meta:${Versions.arrow}"
-    const val anko = "org.jetbrains.anko:anko:${Versions.anko}"
-    const val ankoCommons = "org.jetbrains.anko:anko-commons:${Versions.anko}"
-    const val ankoDesign = "org.jetbrains.anko:anko-design:${Versions.anko}"
     // androidx
     const val multidex = "androidx.multidex:multidex:${Versions.multidex}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -82,6 +79,9 @@ object Libraries {
     // detekt
     const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Build.Versions.detekt}"
     const val detektCli = "io.gitlab.arturbosch.detekt:detekt-cli:${Build.Versions.detekt}"
+    // glide
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     // testing
     const val instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val junit = "junit:junit:${Versions.junit}"
@@ -115,7 +115,7 @@ object Libraries {
         const val arrow = "0.11.0"
         const val retrofit = "2.8.1"
         const val moshi = "1.9.3"
-        const val anko = "0.10.8"
+        const val glide = "4.12.0"
         // test
         const val junit = "4.13"
         const val mockitoAndroid = "3.2.4"
