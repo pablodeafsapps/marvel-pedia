@@ -61,8 +61,6 @@ tasks {
 
 dependencies {
     implementation(Libraries.kotlinStdLib)
-    implementation(Libraries.anko)
-    implementation(Libraries.ankoDesign)
     implementation(Libraries.appCompat)
     implementation(Libraries.lifecycle)
     implementation(Libraries.viewModelKtx)
@@ -76,6 +74,8 @@ dependencies {
     implementation(Libraries.koinViewmodel)
     detekt(Libraries.detektFormatting)
     detekt(Libraries.detektCli)
+    implementation(Libraries.glide)
+    kapt(Libraries.glide)
     // testing dependencies - Unit Test
     testImplementation(Libraries.junit)
     testImplementation(Libraries.mockitoKotlin)

@@ -70,7 +70,7 @@
         android:contentDescription="@string/default_content_description"
         app:layout_constraintStart_toStartOf="@id/guidelineVer04"
         app:layout_constraintTop_toTopOf="@id/guidelineHor06"
-        app:srcCompat="@drawable/img_cn_profile" />
+        app:srcCompat="@drawable/img_marvel_placeholder" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor06"
