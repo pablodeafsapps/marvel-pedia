@@ -27,9 +27,15 @@ fun CharacterDataBo.toVo() = CharacterDataVo(
     total = total
 )
 
+/**
+ *
+ */
 fun List<CharacterBo>.toVoList(): List<CharacterVo> = map { it.toVo() }
 
-private fun CharacterBo.toVo() = CharacterVo(
+/**
+ *
+ */
+fun CharacterBo.toVo() = CharacterVo(
     id = id,
     name = name,
     description = description,
@@ -38,6 +44,24 @@ private fun CharacterBo.toVo() = CharacterVo(
 )
 
 private fun ThumbnailBo.toVo() = ThumbnailVo(
+    extension = extension,
+    path = path
+)
+
+/**
+ *
+ */
+ fun CharacterVo?.toBo() = this?.let {
+    CharacterBo(
+        id = id,
+        name = name,
+        description = description,
+        resourceUri = resourceUri,
+        thumbnail = thumbnail.toBo()
+    )
+}
+
+private fun ThumbnailVo.toBo() = ThumbnailBo(
     extension = extension,
     path = path
 )

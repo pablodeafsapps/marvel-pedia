@@ -2,7 +2,6 @@
     <!-- activity_main -->
     <string name="tv_no_data_text">No Data</string>
     <string name="tv_placeholder_text">this text represents a character to be fetched and displayed on the main screen</string>
-    <string name="tv_detail_id">#%1$s</string>
     <string name="default_content_description">image</string>
     <!-- activity_detail -->
 </resources>

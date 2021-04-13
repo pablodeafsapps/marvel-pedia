@@ -25,4 +25,17 @@ object Repository : DomainlayerContract.Datalayer.DataRepository<CharacterDataBo
             FailureBo.NoConnection.left()
         }
 
+    /**
+     * This method fetches a single character, according to an identifier, by querying the
+     * corresponding data-source.
+     *
+     * @return A [CharacterDataBoWrapper] or an error otherwise
+     */
+    override suspend fun fetchCharacterDetailsByIdUc(id: Int): Either<FailureBo, CharacterDataBoWrapper> =
+        connectivityDataSource.checkNetworkConnectionAvailability().takeIf { it }?.let {
+            moviesDataSource.fetchCharacterDetailsByIdResponse(id = id.toString())
+        } ?: run {
+            FailureBo.NoConnection.left()
+        }
+
 }

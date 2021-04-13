@@ -32,7 +32,7 @@ interface MoviesDataSource {
     /**
      * Fetches a specific character according to an identifier or an error otherwise
      */
-//    suspend fun fetchCharacterByIdResponse(id: String): Either<FailureBo, String>
+    suspend fun fetchCharacterDetailsByIdResponse(id: String): Either<FailureBo, CharacterDataBoWrapper>
 }
 
 /**
@@ -53,6 +53,20 @@ class MarvelDataSource(private val retrofit: Retrofit) : MoviesDataSource {
         )
     }
 
+    override suspend fun fetchCharacterDetailsByIdResponse(id: String): Either<FailureBo, CharacterDataBoWrapper> {
+        val timestamp = getCurrentTimestamp()
+        val requestParams = mapOf(
+            "ts" to timestamp,
+            "apikey" to getMarvelUserApiKey(),
+            "hash" to getMd5Hash(RADIX, SIGNUM, timestamp)
+        )
+        return retrofitSafeCall(
+            requestParameter = formatRequestStringOutOfParams(id = id, params = requestParams),
+            retrofitRequest = retrofit.create(MarvelApiService::class.java)::getCharacterDetailsByIdAsync,
+            transform = { it.toBo() }
+        )
+    }
+
     private fun getMarvelUserApiKey(): String = "f1316cbd028773f7effb0218b6a29d12"
 
     private fun getCurrentTimestamp(): String = System.currentTimeMillis().toString()
@@ -64,5 +78,8 @@ class MarvelDataSource(private val retrofit: Retrofit) : MoviesDataSource {
                     getMarvelUserApiKey().toByteArray()
         return BigInteger(signum, md.digest(data)).toString(radix)
     }
+
+    private fun formatRequestStringOutOfParams(id: String, params: Map<String, String>): String =
+        "v1/public/characters/$id?ts=${params["ts"]}&apikey=${params["apikey"]}&hash=${params["hash"]}"
 
 }

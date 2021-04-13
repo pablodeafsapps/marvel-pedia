@@ -1,6 +1,7 @@
 package es.plexus.android.marvelpedia.presentationlayer.di
 
 import es.plexus.android.marvelpedia.domainlayer.base.BaseDomainLayerBridge
+import es.plexus.android.marvelpedia.domainlayer.feature.detail.DETAIL_DOMAIN_BRIDGE_TAG
 import es.plexus.android.marvelpedia.domainlayer.feature.main.MAIN_DOMAIN_BRIDGE_TAG
 import es.plexus.android.marvelpedia.presentationlayer.feature.detail.viewmodel.DetailViewModel
 import es.plexus.android.marvelpedia.presentationlayer.feature.main.viewmodel.MainViewModel
@@ -20,5 +21,5 @@ import org.koin.dsl.module
 val presentationLayerModule = module(override = true) {
     viewModel { SplashActivityViewModel(bridge = BaseDomainLayerBridge.None) }
     viewModel { MainViewModel(bridge = get(named(name = MAIN_DOMAIN_BRIDGE_TAG))) }
-    viewModel { DetailViewModel(bridge = BaseDomainLayerBridge.None) }
+    viewModel { DetailViewModel(bridge = get(named(name = DETAIL_DOMAIN_BRIDGE_TAG))) }
 }

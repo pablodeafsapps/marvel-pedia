@@ -20,15 +20,16 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * All results update an observable variable, [_screenState], with [MainState] values.
  */
 @ExperimentalCoroutinesApi
-class MainViewModel(bridge: MainDomainLayerBridge<CharacterDataBoWrapper>) :
-    BaseMvvmViewModel<MainDomainLayerBridge<CharacterDataBoWrapper>, MainState>(bridge = bridge) {
+class MainViewModel(
+    bridge: MainDomainLayerBridge<CharacterDataBoWrapper>
+) : BaseMvvmViewModel<MainDomainLayerBridge<CharacterDataBoWrapper>, MainState>(bridge = bridge) {
 
     /**
      * Indicates that the associated view has been created
      */
     fun onViewCreated() {
         _screenState.value = ScreenState.Loading
-        bridge.fetchJokes(
+        bridge.fetchCharacters(
             scope = viewModelScope,
             onResult = {
                 it.fold(::handleError, ::handleSuccess)
@@ -48,9 +49,9 @@ class MainViewModel(bridge: MainDomainLayerBridge<CharacterDataBoWrapper>) :
             ScreenState.Render(MainState.ShowCharacterList(characterList = dataWrapper.data.results.toVoList()))
     }
 
-    private fun handleError(failureBo: FailureBo) {
+    private fun handleError(failure: FailureBo) {
         _screenState.value =
-            ScreenState.Render(MainState.ShowError(failure = failureBo.boToVoFailure()))
+            ScreenState.Render(MainState.ShowError(failure = failure.boToVoFailure()))
     }
 
 }
