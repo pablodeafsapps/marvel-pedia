@@ -12,6 +12,8 @@ import java.security.MessageDigest
 
 private const val RADIX = 16
 private const val SIGNUM = 1
+private const val MARVEL_API_PUBLIC_KEY = "f1316cbd028773f7effb0218b6a29d12"
+private const val MARVEL_API_PRIVATE_KEY = "b2a9aec295e4416db64dcbd692490af1ad8a1c5b"
 
 /**
  * This interface represents the contract to be complied by an entity to fit in as the jokes provider
@@ -45,7 +47,7 @@ class MarvelDataSource(private val retrofit: Retrofit) : CharactersDataSource {
         return retrofitSafeCall(
             requestParameter = mapOf(
                 "ts" to timestamp,
-                "apikey" to getMarvelUserApiKey(),
+                "apikey" to getMarvelUserPublicApiKey(),
                 "hash" to getMd5Hash(RADIX, SIGNUM, timestamp)
             ),
             retrofitRequest = retrofit.create(MarvelApiService::class.java)::getCharactersAsync,
@@ -57,7 +59,7 @@ class MarvelDataSource(private val retrofit: Retrofit) : CharactersDataSource {
         val timestamp = getCurrentTimestamp()
         val requestParams = mapOf(
             "ts" to timestamp,
-            "apikey" to getMarvelUserApiKey(),
+            "apikey" to getMarvelUserPublicApiKey(),
             "hash" to getMd5Hash(RADIX, SIGNUM, timestamp)
         )
         return retrofitSafeCall(
@@ -67,17 +69,19 @@ class MarvelDataSource(private val retrofit: Retrofit) : CharactersDataSource {
         )
     }
 
-    private fun getMarvelUserApiKey(): String = "f1316cbd028773f7effb0218b6a29d12"
-
     private fun getCurrentTimestamp(): String = System.currentTimeMillis().toString()
 
     private fun getMd5Hash(radix: Int, signum: Int, timestamp: String): String {
         val md = MessageDigest.getInstance("MD5")
         val data =
-            timestamp.toByteArray() + "b2a9aec295e4416db64dcbd692490af1ad8a1c5b".toByteArray() +
-                    getMarvelUserApiKey().toByteArray()
+            timestamp.toByteArray() + getMarvelUserPrivateApiKey().toByteArray() +
+                    getMarvelUserPublicApiKey().toByteArray()
         return BigInteger(signum, md.digest(data)).toString(radix)
     }
+
+    private fun getMarvelUserPublicApiKey(): String = MARVEL_API_PUBLIC_KEY
+
+    private fun getMarvelUserPrivateApiKey(): String = MARVEL_API_PRIVATE_KEY
 
     private fun formatRequestStringOutOfParams(id: String, params: Map<String, String>): String =
         "v1/public/characters/$id?ts=${params["ts"]}&apikey=${params["apikey"]}&hash=${params["hash"]}"
