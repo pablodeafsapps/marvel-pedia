@@ -29,6 +29,8 @@ keyPassword = ""
 
 This file can contain random or fake data when building as _debug_, but a real keystore is required to generate a signed APK.
 
+Regarding the [Marvel API](https://developer.marvel.com/documentation/generalinfo), a user key is required. For this particular sample app, a default key has been automatically configured. This sensitive information should be placed in a separate file, and excluded from any VCS scheme.
+
 ## Generating signed APK
 From Android Studio:
 1. ***Build*** menu
