@@ -5,7 +5,7 @@
     android:id="@+id/activity_detail__cl__root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@android:color/darker_gray"
     tools:context=".feature.detail.view.ui.DetailActivity">
 
     <ProgressBar
@@ -20,27 +20,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvJoke"
+        android:id="@+id/tvDescription"
         android:layout_width="@dimen/fully_stretchable"
         android:layout_height="@dimen/fully_stretchable"
-        android:layout_marginStart="@dimen/eight"
-        android:layout_marginLeft="@dimen/eight"
-        android:layout_marginEnd="@dimen/eight"
-        android:layout_marginRight="@dimen/eight"
-        android:gravity="bottom"
+        android:layout_margin="@dimen/eight"
+        android:gravity="top"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor06"
+        app:layout_constraintBottom_toTopOf="@id/tvId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvId"
+        app:layout_constraintTop_toBottomOf="@id/ivCharacter"
         tools:text="Joke text" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCategories"
+        android:id="@+id/tvId"
         android:layout_width="@dimen/fully_stretchable"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/eight"
+        android:gravity="end"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,15 +46,13 @@
         tools:text="[explicit,nerd]" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvId"
+        android:id="@+id/tvName"
         android:layout_width="@dimen/fully_stretchable"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/eight"
         android:padding="@dimen/eight"
-        android:text="@string/tv_detail_id"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/tvJoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -64,13 +60,17 @@
         tools:text="#24" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivJoke"
+        android:id="@+id/ivCharacter"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/fully_stretchable"
+        android:layout_marginTop="@dimen/eight"
         android:contentDescription="@string/default_content_description"
-        app:layout_constraintStart_toStartOf="@id/guidelineVer04"
-        app:layout_constraintTop_toTopOf="@id/guidelineHor06"
-        app:srcCompat="@drawable/img_marvel_placeholder" />
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHor06"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        tools:srcCompat="@drawable/img_marvel_placeholder" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHor06"

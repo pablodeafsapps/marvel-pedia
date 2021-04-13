@@ -62,7 +62,7 @@ class MainViewModelTest : KoinTest {
         // when
         viewModel.onViewCreated()
         // then
-        verify(mockBridge).fetchJokes(any(), captor.capture())
+        verify(mockBridge).fetchCharacters(any(), captor.capture())
         verifyNoMoreInteractions(mockBridge)
         captor.firstValue.invoke(getDummyJokeBoWrapper().right())
 
@@ -76,7 +76,7 @@ class MainViewModelTest : KoinTest {
         // when
         viewModel.onViewCreated()
         // then
-        verify(mockBridge).fetchJokes(any(), captor.capture())
+        verify(mockBridge).fetchCharacters(any(), captor.capture())
         verifyNoMoreInteractions(mockBridge)
         captor.firstValue.invoke(FailureBo.Unknown.left())
 

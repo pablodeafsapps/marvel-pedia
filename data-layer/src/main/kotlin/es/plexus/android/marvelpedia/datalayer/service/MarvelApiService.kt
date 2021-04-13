@@ -3,9 +3,8 @@ package es.plexus.android.marvelpedia.datalayer.service
 import es.plexus.android.marvelpedia.datalayer.domain.CharacterDataDtoWrapper
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 import retrofit2.http.QueryMap
+import retrofit2.http.Url
 
 /**
  * This interface is used by Retrofit to conform the API service queries
@@ -27,12 +26,7 @@ interface MarvelApiService {
     /**
      * This function returns a single character response from an HTTP GET query, according to a specific identifier
      */
-    @GET("v1/public/characters/{characterId}")
-    suspend fun getCharacterByIdAsync(
-        @Query("apikey") apiKey: String,
-        @Query("ts") ts: String,
-        @Query("hash") hash: String,
-        @Path("characterId") id: String
-    ): Response<String>
+    @GET
+    suspend fun getCharacterDetailsByIdAsync(@Url url: String): Response<CharacterDataDtoWrapper>
 
 }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id(Plugins.javaLibrary)
     id(Plugins.kotlin)
@@ -6,6 +8,10 @@ plugins {
     id(Plugins.detekt)
     // add automatic documentation generator feature
     id(Plugins.dokka)
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 tasks {

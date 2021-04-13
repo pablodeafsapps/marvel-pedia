@@ -12,7 +12,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @param U represents the state of the view, and must extend from @see{BaseState}
  * @property viewModel a reference to the [BaseMvvmViewModel] associated to this view
  *
- * @author Pablo L. Sordo
  * @since 1.0
  */
 @ExperimentalCoroutinesApi

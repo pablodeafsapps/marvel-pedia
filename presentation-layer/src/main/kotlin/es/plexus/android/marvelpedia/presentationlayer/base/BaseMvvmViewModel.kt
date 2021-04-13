@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
  * @param S represents the state of the view, and must extend from [BaseState]
  * @property screenState the [StateFlow] which will be updated to notify the view
  *
- * @author Pablo L. Sordo
  * @since 1.0
  */
 @ExperimentalCoroutinesApi

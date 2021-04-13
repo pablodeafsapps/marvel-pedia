@@ -14,13 +14,11 @@ import es.plexus.android.marvelpedia.domainlayer.domain.ErrorMessage
 import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
 import retrofit2.Response
 import java.io.IOException
-import kotlin.reflect.KSuspendFunction1
 
 /**
  * This extension function allows any entity hosting a [Context] to easily check whether there is a
  * valid data connection. It also takes into account the Android version available.
  *
- * @author Pablo L. Sordo Martínez
  * @since 1.0
  */
 fun Context.isNetworkAvailable(): Boolean {

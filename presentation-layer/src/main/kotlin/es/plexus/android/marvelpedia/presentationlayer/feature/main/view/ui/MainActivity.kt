@@ -21,7 +21,6 @@ import es.plexus.android.marvelpedia.presentationlayer.feature.main.view.state.M
 import es.plexus.android.marvelpedia.presentationlayer.feature.main.viewmodel.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val INTENT_DATA_KEY = "characterItem"
@@ -58,7 +57,7 @@ class MainActivity :
     }
 
     override fun initModel() {
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             viewModel.screenState.collect { screenState ->
                 when (screenState) {
                     is ScreenState.Idle -> hideLoading()

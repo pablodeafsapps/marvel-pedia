@@ -68,11 +68,18 @@ interface DomainlayerContract {
          */
         interface DataRepository<out T> {
             /**
-             * Fetches joke-related data according to [T] data type
+             * Fetches character-related data according to [T] data type
              *
              * @return A [T] data if it is successful or a [FailureBo] otherwise
              */
             suspend fun fetchCharacters(): Either<FailureBo, T>
+
+            /**
+             * Fetches a single character-related data according to [T] data type
+             *
+             * @return A [T] data if it is successful or a [FailureBo] otherwise
+             */
+            suspend fun fetchCharacterDetailsByIdUc(id: Int): Either<FailureBo, T>
         }
 
     }
