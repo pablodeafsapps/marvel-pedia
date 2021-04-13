@@ -2,8 +2,10 @@ package es.plexus.android.marvelpedia.datalayer.repository
 
 import arrow.core.Either
 import arrow.core.left
+import es.plexus.android.marvelpedia.datalayer.datasource.CharactersDataSource
 import es.plexus.android.marvelpedia.datalayer.datasource.ConnectivityDataSource
-import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource
+import es.plexus.android.marvelpedia.datalayer.domain.FailureDto
+import es.plexus.android.marvelpedia.datalayer.domain.dtoToBoFailure
 import es.plexus.android.marvelpedia.domainlayer.DomainlayerContract
 import es.plexus.android.marvelpedia.domainlayer.domain.CharacterDataBoWrapper
 import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
@@ -11,7 +13,7 @@ import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
 object Repository : DomainlayerContract.Datalayer.DataRepository<CharacterDataBoWrapper> {
 
     lateinit var connectivityDataSource: ConnectivityDataSource
-    lateinit var moviesDataSource: MoviesDataSource
+    lateinit var charactersDataSource: CharactersDataSource
 
     /**
      * This method fetches a list of characters by querying the corresponding data-source.
@@ -19,10 +21,15 @@ object Repository : DomainlayerContract.Datalayer.DataRepository<CharacterDataBo
      * @return A [CharacterDataBoWrapper] or an error otherwise
      */
     override suspend fun fetchCharacters(): Either<FailureBo, CharacterDataBoWrapper> =
-        connectivityDataSource.checkNetworkConnectionAvailability().takeIf { it }?.let {
-            moviesDataSource.fetchCharactersResponse()
-        } ?: run {
-            FailureBo.NoConnection.left()
+        try {
+            connectivityDataSource.checkNetworkConnectionAvailability().takeIf { it }?.let {
+                charactersDataSource.fetchCharactersResponse()
+            } ?: run {
+                FailureBo.NoConnection.left()
+            }
+        } catch (e: Exception) {
+            println("requestLogin(...) - Error: ${e.message}")
+            FailureDto.Unknown.dtoToBoFailure().left()
         }
 
     /**
@@ -32,10 +39,15 @@ object Repository : DomainlayerContract.Datalayer.DataRepository<CharacterDataBo
      * @return A [CharacterDataBoWrapper] or an error otherwise
      */
     override suspend fun fetchCharacterDetailsByIdUc(id: Int): Either<FailureBo, CharacterDataBoWrapper> =
-        connectivityDataSource.checkNetworkConnectionAvailability().takeIf { it }?.let {
-            moviesDataSource.fetchCharacterDetailsByIdResponse(id = id.toString())
-        } ?: run {
-            FailureBo.NoConnection.left()
+        try {
+            connectivityDataSource.checkNetworkConnectionAvailability().takeIf { it }?.let {
+                charactersDataSource.fetchCharacterDetailsByIdResponse(id = id.toString())
+            } ?: run {
+                FailureBo.NoConnection.left()
+            }
+        } catch (e: Exception) {
+            println("requestLogin(...) - Error: ${e.message}")
+            FailureDto.Unknown.dtoToBoFailure().left()
         }
 
 }

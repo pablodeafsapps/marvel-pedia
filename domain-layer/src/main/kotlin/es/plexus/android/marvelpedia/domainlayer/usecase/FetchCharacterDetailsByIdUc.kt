@@ -12,7 +12,7 @@ const val FETCH_CHARACTER_DETAILS_BY_ID_UC_TAG = "fetchCharacterDetailsByIdUc"
 private const val SINGLE_VALUE = 0
 
 /**
- * A use-case which allows to fetch a list of movies from a repository
+ * A use-case which allows to fetch a single character data from a repository
  *
  * @property [dataRepository] The repository responsible of bringing the required data
  */

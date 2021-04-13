@@ -7,10 +7,10 @@ import es.plexus.android.marvelpedia.datalayer.datasource.AndroidDataSource
 import es.plexus.android.marvelpedia.datalayer.datasource.ConnectivityDataSource
 import es.plexus.android.marvelpedia.datalayer.datasource.ConnectivityDataSource.Companion.CONNECTIVITY_DATA_SOURCE_TAG
 import es.plexus.android.marvelpedia.datalayer.datasource.MarvelDataSource
-import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource
-import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource.Companion.MOVIES_API_SERVICE_TAG
-import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource.Companion.MOVIES_DATA_SOURCE_TAG
-import es.plexus.android.marvelpedia.datalayer.datasource.MoviesDataSource.Companion.MOVIES_BASE_URL
+import es.plexus.android.marvelpedia.datalayer.datasource.CharactersDataSource
+import es.plexus.android.marvelpedia.datalayer.datasource.CharactersDataSource.Companion.CHARACTERS_API_SERVICE_TAG
+import es.plexus.android.marvelpedia.datalayer.datasource.CharactersDataSource.Companion.CHARACTERS_DATA_SOURCE_TAG
+import es.plexus.android.marvelpedia.datalayer.datasource.CharactersDataSource.Companion.CHARACTERS_BASE_URL
 import es.plexus.android.marvelpedia.datalayer.repository.Repository
 import es.plexus.android.marvelpedia.datalayer.utils.ConnectivityInterceptor
 import es.plexus.android.marvelpedia.datalayer.utils.ConnectivityInterceptor.Companion.CONNECTIVITY_INTERCEPTOR_TAG
@@ -40,7 +40,7 @@ val dataLayerModule = module(override = true) {
     single {
         Repository.apply {
             connectivityDataSource = get(named(name = CONNECTIVITY_DATA_SOURCE_TAG))
-            moviesDataSource = get(named(name = MOVIES_DATA_SOURCE_TAG))
+            charactersDataSource = get(named(name = CHARACTERS_DATA_SOURCE_TAG))
         }
     }
     single<DomainlayerContract.Datalayer.DataRepository<CharacterDataBoWrapper>>(named(name = DATA_REPOSITORY_TAG)) {
@@ -50,8 +50,8 @@ val dataLayerModule = module(override = true) {
     factory<ConnectivityDataSource>(named(name = CONNECTIVITY_DATA_SOURCE_TAG)) {
         AndroidDataSource(context = androidContext())
     }
-    factory<MoviesDataSource>(named(name = MOVIES_DATA_SOURCE_TAG)) {
-        MarvelDataSource(get(named(name = MOVIES_API_SERVICE_TAG)))
+    factory<CharactersDataSource>(named(name = CHARACTERS_DATA_SOURCE_TAG)) {
+        MarvelDataSource(get(named(name = CHARACTERS_API_SERVICE_TAG)))
     }
     factory<Interceptor>(named(name = CONNECTIVITY_INTERCEPTOR_TAG)) {
         ConnectivityInterceptor(get(named(name = CONNECTIVITY_DATA_SOURCE_TAG)))
@@ -64,13 +64,13 @@ val dataLayerModule = module(override = true) {
             .build()
     }
     // retrofit
-    single<Retrofit>(named(name = MOVIES_API_SERVICE_TAG)) {
+    single<Retrofit>(named(name = CHARACTERS_API_SERVICE_TAG)) {
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(get())
-            .baseUrl(MOVIES_BASE_URL)
+            .baseUrl(CHARACTERS_BASE_URL)
             .build()
     }
 }

@@ -8,7 +8,7 @@ import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
 const val FETCH_CHARACTERS_UC_TAG = "fetchCharactersUc"
 
 /**
- * A use-case which allows to fetch a list of movies from a repository
+ * A use-case which allows to fetch a list of characters from a repository
  *
  * @property [dataRepository] The repository responsible of bringing the required data
  */

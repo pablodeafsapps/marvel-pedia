@@ -2,19 +2,20 @@ package es.plexus.android.marvelpedia.presentationlayer.feature.main.viewmodel
 
 import arrow.core.Either
 import arrow.core.left
+import arrow.core.right
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import es.plexus.android.marvelpedia.domainlayer.domain.CharacterDataBoWrapper
 import es.plexus.android.marvelpedia.domainlayer.domain.FailureBo
-import es.plexus.android.marvelpedia.domainlayer.domain.JokeBo
-import es.plexus.android.marvelpedia.domainlayer.domain.JokeBoWrapper
 import es.plexus.android.marvelpedia.domainlayer.feature.main.MAIN_DOMAIN_BRIDGE_TAG
 import es.plexus.android.marvelpedia.domainlayer.feature.main.MainDomainLayerBridge
 import es.plexus.android.marvelpedia.presentationlayer.base.ScreenState
 import es.plexus.android.marvelpedia.presentationlayer.di.presentationLayerModule
 import es.plexus.android.marvelpedia.presentationlayer.feature.main.view.state.MainState
+import es.plexus.android.marvelpedia.presentationlayer.utils.getDummyCharacterBoWrapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
 import org.junit.Assert
@@ -27,14 +28,11 @@ import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.inject
 
-private const val DEFAULT_STRING_VALUE = ""
-private const val DEFAULT_INTEGER_VALUE = -1
-
 @ExperimentalCoroutinesApi
 class MainViewModelTest : KoinTest {
 
     private val viewModel: MainViewModel by inject()
-    private lateinit var mockBridge: MainDomainLayerBridge<JokeBoWrapper>
+    private lateinit var mockBridge: MainDomainLayerBridge<CharacterDataBoWrapper>
 
     @Before
     fun setUp() {
@@ -56,23 +54,23 @@ class MainViewModelTest : KoinTest {
     }
 
     @Test
-    fun `check that state is 'ShowJokeList' when jokes are fetched`() {
+    fun `check that state is 'ShowCharacterList' when character data are fetched`() {
         // given
-        val captor = argumentCaptor<(Either<FailureBo, JokeBoWrapper>) -> Unit>()
+        val captor = argumentCaptor<(Either<FailureBo, CharacterDataBoWrapper>) -> Unit>()
         // when
         viewModel.onViewCreated()
         // then
         verify(mockBridge).fetchCharacters(any(), captor.capture())
         verifyNoMoreInteractions(mockBridge)
-        captor.firstValue.invoke(getDummyJokeBoWrapper().right())
+        captor.firstValue.invoke(getDummyCharacterBoWrapper().right())
 
         Assert.assertTrue(getRenderState() is MainState.ShowCharacterList)
     }
 
     @Test
-    fun `check that state is 'ShowError' when jokes cannot be fetched`() {
+    fun `check that state is 'ShowError' when character data cannot be fetched`() {
         // given
-        val captor = argumentCaptor<(Either<FailureBo, JokeBoWrapper>) -> Unit>()
+        val captor = argumentCaptor<(Either<FailureBo, CharacterDataBoWrapper>) -> Unit>()
         // when
         viewModel.onViewCreated()
         // then
@@ -85,18 +83,5 @@ class MainViewModelTest : KoinTest {
 
     private fun getRenderState() =
         (viewModel.screenState.value as? ScreenState.Render<MainState>)?.renderState
-
-    private fun getDummyJokeBoWrapper() = JokeBoWrapper(
-        type = DEFAULT_STRING_VALUE,
-        value = getDummyJokeBoList()
-    )
-
-    private fun getDummyJokeBoList() = listOf(getDummyJokeBo())
-
-    private fun getDummyJokeBo() = JokeBo(
-        id = DEFAULT_INTEGER_VALUE,
-        joke = DEFAULT_STRING_VALUE,
-        categories = listOf(DEFAULT_STRING_VALUE)
-    )
 
 }
