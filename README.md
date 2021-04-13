@@ -1,6 +1,6 @@
 # Marvelpedia
 
-![alt text](docs/images/cn-approved.png)
+![alt text](docs/images/marvel-logo.jpg)
 
 **Marvelpedia** is a sample baseline project based on the Plexus Tech Android prototype which aims to show a standard state-of-the-art proposal for Android development.
 
@@ -89,9 +89,9 @@ When integrated, it enables several Gradle tasks which allow to assess the code 
 
 ### Testing
 
-As one main aspect in the current state-of-the-art in software development, **Wikipedia** does include a good number of Unit Tests and a few Instrumentation Tests. The former cover the *domain* and *data* layers, whereas the latter are included in the *presentation* layer.
+As one main aspect in the current state-of-the-art in software development, **Warvelpedia** does include a few Unit Tests and Instrumentation Tests. The former cover the *domain* and *data* layers, whereas the latter are included in the *presentation* layer.
 
-The Plexus Android Team advocates for an extensive usage of Unit Tests and Integration Tests. On the other hand, Instrumentation Tests, such as UI tests, are restricted to only a few, due to their slow execution and emultor/device dependency.
+The Plexus Android Team advocates for an extensive usage of Unit Tests and Integration Tests. On the other hand, Instrumentation Tests, such as UI tests, are restricted to only a few, due to their slow execution and emulator/device dependency.
 
 ### Continuous Integration
 
@@ -99,7 +99,7 @@ Continuous Integration (CI) is the practice of automating the integration of cod
 
 <img src="docs/images/github-actions-logo.png" alt="GitHub Actions" width="300">
 
-Among the many options available when it comes to CI, **Wikipedia** uses [<b>GitHub Actions</b>](https://github.com/features/actions), which is a recent platform which is increasing popularity thanks to its straightforward integration when using GitHub. There are 2 different *workflows*, for *develop* and *feature* branches. 
+Among the many options available when it comes to CI, **Warvelpedia** uses [<b>GitHub Actions</b>](https://github.com/features/actions), which is a recent platform which is increasing popularity thanks to its straightforward integration when using GitHub. There are 2 different *workflows*, for *develop* and *feature* branches. 
 
 
 ## License 
@@ -120,7 +120,7 @@ When finished, open up `index.html` using your favourite browser.
 
 
 ## Maintainers
-This project is mantained by the Plexus Tech Android Team.
+This project is maintained by the Plexus Tech Android Team.
 
 
 ## Issues

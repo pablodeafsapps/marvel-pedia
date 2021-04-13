@@ -16,12 +16,12 @@ private const val SIGNUM = 1
 /**
  * This interface represents the contract to be complied by an entity to fit in as the jokes provider
  */
-interface MoviesDataSource {
+interface CharactersDataSource {
 
     companion object {
-        const val MOVIES_DATA_SOURCE_TAG = "moviesDataSource"
-        const val MOVIES_API_SERVICE_TAG = "moviesApiService"
-        const val MOVIES_BASE_URL = "https://gateway.marvel.com/"
+        const val CHARACTERS_DATA_SOURCE_TAG = "charactersDataSource"
+        const val CHARACTERS_API_SERVICE_TAG = "charactersApiService"
+        const val CHARACTERS_BASE_URL = "https://gateway.marvel.com/"
     }
 
     /**
@@ -38,7 +38,7 @@ interface MoviesDataSource {
 /**
  *
  */
-class MarvelDataSource(private val retrofit: Retrofit) : MoviesDataSource {
+class MarvelDataSource(private val retrofit: Retrofit) : CharactersDataSource {
 
     override suspend fun fetchCharactersResponse(): Either<FailureBo, CharacterDataBoWrapper> {
         val timestamp = getCurrentTimestamp()
